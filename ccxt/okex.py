@@ -28,7 +28,7 @@ from ccxt.base.decimal_to_precision import TRUNCATE
 from ccxt.base.decimal_to_precision import TICK_SIZE
 from ccxt.base.precise import Precise
 
-CLIENT_ORDER_ID = '422669f3284d4cBC'
+BROKER_CODE = '422669f3284d4cBC'
 TAG = 'Bitsbee1'
 
 class okex(Exchange):
@@ -1638,8 +1638,8 @@ class okex(Exchange):
             #     - Isolated FUTURES/SWAP/OPTION: isolated
             #
             # 'ccy': currency['id'],  # only applicable to cross MARGIN orders in single-currency margin
-            'clOrdId': CLIENT_ORDER_ID,  # up to 32 characters, must be unique
-            'tag': TAG,  # up to 8 characters
+            'clOrdId': BROKER_CODE + TAG,  # up to 32 characters, must be unique
+            'tag': BROKER_CODE,  # up to 8 characters
             #
             #     In long/short mode, side and posSide need to be combined
             #
@@ -1674,7 +1674,7 @@ class okex(Exchange):
             request['ordType'] = 'post_only'
             params = self.omit(params, ['postOnly'])
         # clientOrderId = self.safe_string_2(params, 'clOrdId', 'clientOrderId')
-        clientOrderId = CLIENT_ORDER_ID
+        clientOrderId = BROKER_CODE + TAG
         if clientOrderId is None:
             brokerId = self.safe_string(self.options, 'brokerId')
             if brokerId is not None:
@@ -1754,10 +1754,10 @@ class okex(Exchange):
         request = {
             'instId': market['id'],
             # 'ordId': id,  # either ordId or clOrdId is required
-            'clOrdId': CLIENT_ORDER_ID
+            'clOrdId': BROKER_CODE + TAG
         }
         # clientOrderId = self.safe_string_2(params, 'clOrdId', 'clientOrderId')
-        clientOrderId = CLIENT_ORDER_ID
+        clientOrderId = BROKER_CODE + TAG
         if clientOrderId is not None:
             request['clOrdId'] = clientOrderId
         else:
@@ -1873,7 +1873,7 @@ class okex(Exchange):
                 'currency': feeCurrencyCode,
             }
         # clientOrderId = self.safe_string(order, 'clOrdId')
-        clientOrderId = CLIENT_ORDER_ID
+        clientOrderId = BROKER_CODE + TAG
         if (clientOrderId is not None) and (len(clientOrderId) < 1):
             clientOrderId = None  # fix empty clientOrderId string
         stopPrice = self.safe_number(order, 'slTriggerPx')
@@ -1912,7 +1912,7 @@ class okex(Exchange):
             # 'ordId': id,
         }
         # clientOrderId = self.safe_string_2(params, 'clOrdId', 'clientOrderId')
-        clientOrderId = CLIENT_ORDER_ID
+        clientOrderId = BROKER_CODE + TAG
         if clientOrderId is not None:
             request['clOrdId'] = clientOrderId
         else:
