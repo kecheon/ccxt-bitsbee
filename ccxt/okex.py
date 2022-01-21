@@ -142,18 +142,18 @@ class okex(Exchange):
                 '6M': '6Mutc',
                 '1y': '1Yutc',
             },
-            'hostname': 'www.okex.com',
+            'hostname': 'www.okx.com',
             'urls': {
                 'logo': 'https://user-images.githubusercontent.com/1294454/32552768-0d6dd3c6-c4a6-11e7-90f8-c043b64756a7.jpg',
                 'api': {
                     'rest': 'https://{hostname}',
                 },
-                'www': 'https://www.okex.com',
-                'doc': 'https://www.okex.com/docs-v5/en/',
-                'fees': 'https://www.okex.com/pages/products/fees.html',
-                # 'referral': 'https://www.okex.com/join/1888677',
+                'www': 'https://www.okx.com',
+                'doc': 'https://www.okx.com/docs-v5/en/',
+                'fees': 'https://www.okx.com/pages/products/fees.html',
+                # 'referral': 'https://www.okx.com/join/1888677',
                 'test': {
-                    'rest': 'https://testnet.okex.com',
+                    'rest': 'https://testnet.okx.com',
                 },
             },
             'api': {
@@ -643,7 +643,7 @@ class okex(Exchange):
         #             {
         #                 "begin":"1621328400000",
         #                 "end":"1621329000000",
-        #                 "href":"https://www.okex.com/support/hc/en-us/articles/360060882172",
+        #                 "href":"https://www.okx.com/support/hc/en-us/articles/360060882172",
         #                 "scheDesc":"",
         #                 "serviceType":"1",  # 0 WebSocket, 1 Spot/Margin, 2 Futures, 3 Perpetual, 4 Options, 5 Trading service
         #                 "state":"scheduled",  # ongoing, completed, canceled
@@ -1686,7 +1686,7 @@ class okex(Exchange):
         if type == 'market':
             if market['type'] == 'spot' and side == 'buy':
                 # spot market buy: "sz" can refer either to base currency units or to quote currency units
-                # see documentation: https://www.okex.com/docs-v5/en/#rest-api-trade-place-order
+                # see documentation: https://www.okx.com/docs-v5/en/#rest-api-trade-place-order
                 defaultTgtCcy = self.safe_string(self.options, 'tgtCcy', 'base_ccy')
                 tgtCcy = self.safe_string(params, 'tgtCcy', defaultTgtCcy)
                 if tgtCcy == 'quote_ccy':
@@ -1853,7 +1853,7 @@ class okex(Exchange):
         amount = None
         cost = None
         # spot market buy: "sz" can refer either to base currency units or to quote currency units
-        # see documentation: https://www.okex.com/docs-v5/en/#rest-api-trade-place-order
+        # see documentation: https://www.okx.com/docs-v5/en/#rest-api-trade-place-order
         defaultTgtCcy = self.safe_string(self.options, 'tgtCcy', 'base_ccy')
         tgtCcy = self.safe_string(order, 'tgtCcy', defaultTgtCcy)
         instType = self.safe_string(order, 'instType')
@@ -3185,7 +3185,7 @@ class okex(Exchange):
         marketId = self.safe_string(fundingRate, 'instId')
         symbol = self.safe_symbol(marketId, market)
         nextFundingRate = self.safe_number(fundingRate, 'fundingRate')
-        # https://www.okex.com/support/hc/en-us/articles/360053909272-Ⅸ-Introduction-to-perpetual-swap-funding-fee
+        # https://www.okx.com/support/hc/en-us/articles/360053909272-Ⅸ-Introduction-to-perpetual-swap-funding-fee
         # > The current interest is 0.
         return {
             'info': fundingRate,
