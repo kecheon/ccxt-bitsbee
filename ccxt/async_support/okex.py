@@ -618,7 +618,7 @@ class okex(Exchange):
                     '12': 'option',
                     '18': 'trading',  # unified trading account
                 },
-                'brokerId': 'e847386590ce4dBC',
+                'brokerId': BROKER_CODE,
             },
             'commonCurrencies': {
                 # OKEX refers to ERC20 version of Aeternity(AEToken)
@@ -1673,8 +1673,7 @@ class okex(Exchange):
         if postOnly:
             request['ordType'] = 'post_only'
             params = self.omit(params, ['postOnly'])
-        # clientOrderId = self.safe_string_2(params, 'clOrdId', 'clientOrderId')
-        clientOrderId = BROKER_CODE + self.uuid16()
+        clientOrderId = self.safe_string_2(params, 'clOrdId', 'clientOrderId')
         if clientOrderId is None:
             brokerId = self.safe_string(self.options, 'brokerId')
             if brokerId is not None:
@@ -1756,8 +1755,7 @@ class okex(Exchange):
             # 'ordId': id,  # either ordId or clOrdId is required
             'clOrdId': BROKER_CODE,
         }
-        # clientOrderId = self.safe_string_2(params, 'clOrdId', 'clientOrderId')
-        clientOrderId = BROKER_CODE + self.uuid16()
+        clientOrderId = self.safe_string_2(params, 'clOrdId', 'clientOrderId')
         if clientOrderId is not None:
             request['clOrdId'] = clientOrderId
         else:
@@ -1872,8 +1870,7 @@ class okex(Exchange):
                 'cost': self.parse_number(feeCostSigned),
                 'currency': feeCurrencyCode,
             }
-        # clientOrderId = self.safe_string(order, 'clOrdId')
-        clientOrderId = BROKER_CODE + self.uuid16()
+        clientOrderId = self.safe_string(order, 'clOrdId')
         if (clientOrderId is not None) and (len(clientOrderId) < 1):
             clientOrderId = None  # fix empty clientOrderId string
         stopPrice = self.safe_number(order, 'slTriggerPx')
@@ -1911,8 +1908,7 @@ class okex(Exchange):
             'clOrdId': BROKER_CODE # optional, [a-z0-9]{1,32}
             # 'ordId': id,
         }
-        # clientOrderId = self.safe_string_2(params, 'clOrdId', 'clientOrderId')
-        clientOrderId = BROKER_CODE + self.uuid16()
+        clientOrderId = self.safe_string_2(params, 'clOrdId', 'clientOrderId')
         if clientOrderId is not None:
             request['clOrdId'] = clientOrderId
         else:
