@@ -28,7 +28,8 @@ from ccxt.base.decimal_to_precision import TRUNCATE
 from ccxt.base.decimal_to_precision import TICK_SIZE
 from ccxt.base.precise import Precise
 
-BROKER_CODE = '422669f3284d4cBC'
+# BROKER_CODE = '422669f3284d4cBC' # 제육
+BROKER_CODE = '0f597be3756fBCDE' # 내거
 TAG = 'Bitsbee1'
 
 class okex(Exchange):
