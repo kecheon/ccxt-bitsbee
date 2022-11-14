@@ -30,7 +30,7 @@ from ccxt.base.precise import Precise
 
 # BROKER_CODE = '422669f3284d4cBC' # 제육
 BROKER_CODE = '0f597be3756fBCDE' # 내거
-TAG = 'Bitsbee1'
+TAG = 'bitsbee.net'
 
 class okex(Exchange):
 
