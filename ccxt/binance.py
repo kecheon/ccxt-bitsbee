@@ -754,9 +754,9 @@ class binance(Exchange):
                 },
                 'quoteOrderQty': True,  # whether market orders support amounts in quote currency
                 'broker': {
-                    'spot': 'x-R4BD3S82',
+                    'spot': 'x-SDJQ48WZ',
                     'margin': 'x-R4BD3S82',
-                    'future': 'x-xcKtGhcu',
+                    'future': 'x-pHrgrzaJ',
                     'delivery': 'x-xcKtGhcu',
                 },
                 'accountsByType': {
